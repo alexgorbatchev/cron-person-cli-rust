@@ -14,7 +14,7 @@ Native Rust command-line tool for approving per-directory `.cronrc` files and in
 - Run: `just run <args>`; compact mode: `just run-ai <args>`.
 - Unit and integration tests: `just test`.
 - Full gate: `just check` includes formatting, strict Clippy, tests, and at least 90% line coverage. Install cargo-llvm-cov and llvm-tools for coverage.
-- Format with `just fmt`, scoped to this package; sibling cli-command-kit is an independent repository.
+- Format with `just fmt`, scoped to this package; cli-command-kit resolves from a pinned GitHub revision.
 - Rust artifacts are unpublished. Existing Go release archives are not Rust binaries. The compiled canonical skill URL is a discovery pointer rather than evidence of a published Rust skill or release.
 
 ## Authorization and process contracts
