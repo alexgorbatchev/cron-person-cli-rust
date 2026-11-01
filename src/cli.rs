@@ -6,10 +6,12 @@ use cli_command_kit::{
     },
 };
 use std::path::PathBuf;
-pub const SKILL_POINTER: &str = "Install the cron-person skill using the Skills CLI:\n\n  npx skills add alexgorbatchev/cron-person-cli --skill cron-person\n\nSkill:\n\n  https://github.com/alexgorbatchev/cron-person-cli/tree/main/skills/cron-person\n";
 pub fn help_options() -> HelpOptions {
     HelpOptions {
-        skill: Some(SKILL_POINTER.into()),
+        skill: Some(
+            cli_command_kit::SkillSource::new("alexgorbatchev/cron-person-cli", "main")
+                .expect("the fixed skill source names a GitHub repository"),
+        ),
         tree: cli_command_kit::TreeOptions {
             terminal_width: Some(match cli_command_kit::terminal_width() {
                 0 => 80,

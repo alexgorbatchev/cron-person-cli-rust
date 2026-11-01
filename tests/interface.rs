@@ -134,7 +134,7 @@ async fn metadata_completion_output_errors_and_cancellation() {
     let store = temp.path().join("state.json");
     for mode in [Mode::Agent, Mode::Human] {
         assert_eq!(invoke(&store, &["--version"], mode).await.0, "0.1.0\n");
-        assert_eq!(invoke(&store, &["skill"], mode).await.0, cli::SKILL_POINTER);
+        assert_eq!(invoke(&store, &["skill"], mode).await.0, INSTALL_TEXT);
         for shell in ["bash", "zsh", "fish", "powershell"] {
             for suffix in [
                 vec!["completion", shell],
@@ -339,3 +339,5 @@ fn native_sync_and_uninstall_only_touch_fixture_crontab() {
     let output = run(&["hook", "export", "bash"], "1");
     assert!(output.status.success());
 }
+
+const INSTALL_TEXT: &str = "Install the cron-person skill using the Skills CLI:\n\n  npx skills add alexgorbatchev/cron-person-cli --skill cron-person\n\nSkill:\n\n  https://github.com/alexgorbatchev/cron-person-cli/tree/main/skills/cron-person\n";
